@@ -1,0 +1,40 @@
+# 1. Check initial state
+GET http://localhost:5000/tasks
+
+###
+
+# 2. Create task
+POST http://localhost:5000/tasks
+Content-Type: application/json
+
+{
+  "title": "Study backend architecture"
+}
+
+###
+# 3. Verify creation
+# Copy the "_id" from this response for steps 4 & 5
+GET http://localhost:5000/tasks
+
+# Copy the "_id" from the response for steps 4 & 5
+
+###
+
+# 4. Update task (replace <TASK_ID_HERE>)
+PUT http://localhost:5000/tasks/<TASK_ID_HERE>
+Content-Type: application/json
+
+{
+  "title": "Updated task title"
+}
+
+###
+
+# 5. Delete task (replace <TASK_ID_HERE>)
+DELETE http://localhost:5000/tasks/<TASK_ID_HERE>
+
+###
+
+# 6. Verify final state
+GET http://localhost:5000/tasks
+
