@@ -37,3 +37,14 @@ exports.updateTask = async (id, title) => {
         { new: true } // return updated version
     );
 };
+
+exports.toggleTask = async (id) => {
+    const task = await Task.findById(id);
+
+    if (!task) {
+        return null;
+    }
+
+    task.completed = !task.completed;
+    return await task.save();
+};

@@ -123,3 +123,21 @@ exports.updateTask = async (req, res) => {
         res.status(500).json({ error: "Failed to update task" });
     }
 };
+
+exports.toggleTask = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const updatedTask = await tasksService.toggleTask(id);
+
+        if (!updatedTask) {
+            return res.status(404).json({ error: "Task not found" });
+        }
+
+        res.json(updatedTask);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Failed to toggle task" });
+    }
+};
