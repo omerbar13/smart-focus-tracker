@@ -5,9 +5,13 @@ console.log("file is executing");
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 // 🔥 CONNECT TO MONGODB (MISSING PIECE)

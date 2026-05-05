@@ -1,10 +1,16 @@
+# use for local testing
+# @localUrl = http://localhost:5000
+
+# use for live testing
+@liveUrl = https://smart-focus-tracker.onrender.com
+
 # 1. Check initial state
-GET http://localhost:5000/tasks
+GET {{liveUrl}}/tasks
 
 ###
 
 # 2. Create task
-POST http://localhost:5000/tasks
+POST {{liveUrl}}/tasks
 Content-Type: application/json
 
 {
@@ -14,14 +20,12 @@ Content-Type: application/json
 ###
 # 3. Verify creation
 # Copy the "_id" from this response for steps 4 & 5
-GET http://localhost:5000/tasks
-
-# Copy the "_id" from the response for steps 4 & 5
+GET {{liveUrl}}/tasks
 
 ###
 
 # 4. Update task (replace <TASK_ID_HERE>)
-PUT http://localhost:5000/tasks/<TASK_ID_HERE>
+PUT {{liveUrl}}/tasks/<TASK_ID_HERE>
 Content-Type: application/json
 
 {
@@ -31,10 +35,10 @@ Content-Type: application/json
 ###
 
 # 5. Delete task (replace <TASK_ID_HERE>)
-DELETE http://localhost:5000/tasks/<TASK_ID_HERE>
+DELETE {{liveUrl}}/tasks/<TASK_ID_HERE>
 
 ###
 
 # 6. Verify final state
-GET http://localhost:5000/tasks
+GET {{liveUrl}}/tasks
 
