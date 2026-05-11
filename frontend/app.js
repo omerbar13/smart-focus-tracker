@@ -67,4 +67,10 @@ async function deleteTask(id) {
   loadTasks();
 }
 
+document.getElementById("taskInput").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    createTask();
+  }
+});
+
 loadTasks();
