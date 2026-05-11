@@ -77,3 +77,25 @@ li button {
   font-size: 12px;
   border-radius: 6px;
 }
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-left input {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.completed span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.completed {
+  opacity: 0.75;
+}

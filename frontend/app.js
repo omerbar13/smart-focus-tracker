@@ -10,9 +10,21 @@ async function loadTasks() {
   tasks.forEach(task => {
     const li = document.createElement("li");
 
+    if (task.completed) {
+      li.classList.add("completed");
+    }
+
     li.innerHTML = `
-      ${task.title}
-      <button onclick="deleteTask('${task._id}')">❌</button>
+      <div class="task-left">
+        <input
+          type="checkbox"
+          ${task.completed ? "checked" : ""}
+          onchange="toggleTask('${task._id}')"
+        />
+        <span>${task.title}</span>
+      </div>
+
+      <button onclick="deleteTask('${task._id}')">Delete</button>
     `;
 
     list.appendChild(li);
@@ -21,16 +33,29 @@ async function loadTasks() {
 
 async function createTask() {
   const input = document.getElementById("taskInput");
+  const title = input.value.trim();
+
+  if (!title) {
+    return;
+  }
 
   await fetch(baseUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ title: input.value })
+    body: JSON.stringify({ title })
   });
 
   input.value = "";
+  loadTasks();
+}
+
+async function toggleTask(id) {
+  await fetch(`${baseUrl}/${id}/toggle`, {
+    method: "PATCH"
+  });
+
   loadTasks();
 }
 
