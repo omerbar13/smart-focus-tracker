@@ -169,13 +169,23 @@ async function loadSessions() {
 
   sessions.forEach(session => {
     const li = document.createElement("li");
+    li.classList.add("session-item");
 
-    const taskTitle = session.taskId?.title || "No task";
+    const taskTitle = session.taskId?.title || "No task selected";
     const duration = session.durationMinutes || 0;
     const status = session.status;
 
+    const startedAt = session.startTime
+      ? new Date(session.startTime).toLocaleString()
+      : "Unknown start time";
+
     li.innerHTML = `
-      <span>${taskTitle} — ${duration} min — ${status}</span>
+      <div class="session-info">
+        <strong>${taskTitle}</strong>
+        <span>${duration} min · ${status}</span>
+        <small>${startedAt}</small>
+      </div>
+
       <button onclick="deleteSession('${session._id}')">Delete</button>
     `;
 
