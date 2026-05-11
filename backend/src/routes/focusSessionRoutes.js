@@ -6,5 +6,6 @@ const focusSessionController = require("../controllers/focusSessionController");
 router.post("/start", focusSessionController.startSession);
 router.patch("/:id/stop", focusSessionController.stopSession);
 router.get("/", focusSessionController.getSessions);
+router.delete("/:id", focusSessionController.deleteSession);
 
 module.exports = router;

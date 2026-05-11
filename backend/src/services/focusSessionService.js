@@ -41,8 +41,19 @@ async function getSessions() {
     .sort({ createdAt: -1 });
 }
 
+async function deleteSession(sessionId) {
+  const session = await FocusSession.findByIdAndDelete(sessionId);
+
+  if (!session) {
+    throw new Error("Focus session not found");
+  }
+
+  return session;
+}
+
 module.exports = {
   startSession,
   stopSession,
-  getSessions
+  getSessions,
+  deleteSession
 };

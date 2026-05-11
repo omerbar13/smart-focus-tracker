@@ -174,10 +174,21 @@ async function loadSessions() {
     const duration = session.durationMinutes || 0;
     const status = session.status;
 
-    li.textContent = `${taskTitle} — ${duration} min — ${status}`;
+    li.innerHTML = `
+      <span>${taskTitle} — ${duration} min — ${status}</span>
+      <button onclick="deleteSession('${session._id}')">Delete</button>
+    `;
 
     list.appendChild(li);
   });
+}
+
+async function deleteSession(id) {
+  await fetch(`${sessionsUrl}/${id}`, {
+    method: "DELETE"
+  });
+
+  loadSessions();
 }
 
 function startTimer() {

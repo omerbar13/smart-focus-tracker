@@ -40,8 +40,23 @@ async function getSessions(req, res) {
   }
 }
 
+async function deleteSession(req, res) {
+  try {
+    const { id } = req.params;
+
+    const session = await focusSessionService.deleteSession(id);
+
+    res.json(session);
+  } catch (error) {
+    res.status(404).json({
+      error: error.message
+    });
+  }
+}
+
 module.exports = {
   startSession,
   stopSession,
-  getSessions
+  getSessions,
+  deleteSession
 };
