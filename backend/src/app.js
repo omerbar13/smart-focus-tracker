@@ -1,8 +1,5 @@
 require("dotenv").config();
 
-console.log("file is executing");
-
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,13 +11,14 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// 🔥 CONNECT TO MONGODB (MISSING PIECE)
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("MongoDB connection error:", err));
 
 // importing routes
 const tasksRoutes = require("./routes/tasks");
+const focusSessionRoutes = require("./routes/focusSessionRoutes");
 
 // health check
 app.get("/health", (req, res) => {
@@ -29,6 +27,7 @@ app.get("/health", (req, res) => {
 
 // connect routes
 app.use("/tasks", tasksRoutes);
+app.use("/sessions", focusSessionRoutes);
 
 // start server
 const PORT = process.env.PORT || 5000;
