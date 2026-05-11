@@ -1,56 +1,52 @@
 # Smart Focus Tracker
 
-A full-stack backend API for tracking tasks and focus sessions.  
-Built with Node.js, Express, and MongoDB (Mongoose).
+Smart Focus Tracker is a full-stack task and focus-session tracking application built with Node.js, Express, and MongoDB.
 
-This project demonstrates a clean REST API architecture using separation of concerns (controllers, services, models).
+The project demonstrates a clean backend architecture using RESTful API design, separation of concerns, persistent database storage, and scalable project structure.
 
----
+## Project Overview
 
-## 🚀 Tech Stack
+The application provides a backend API for managing tasks and focus-related productivity data. It was built as a practical full-stack development project to demonstrate backend design, API development, database integration, and maintainable application structure.
+
+## Tech Stack
 
 - Node.js
 - Express.js
-- MongoDB (Atlas)
+- MongoDB Atlas
 - Mongoose
+- JavaScript
 - dotenv
 
----
-
-## 📦 Features
+## Features
 
 - Create tasks
-- Read all tasks
-- Update tasks
+- Retrieve all tasks
+- Update existing tasks
 - Delete tasks
-- Persistent storage with MongoDB
-- Clean layered backend architecture
+- Store data persistently using MongoDB
+- Structured backend architecture with routes, controllers, services, and models
 
----
+## Project Structure
 
-## 🧱 Project Structure
-
-```bash
+```text
 backend/
 ├── src/
-│   ├── controllers/      # Handles HTTP requests
-│   ├── services/         # Business logic + database operations
+│   ├── controllers/      # Handles HTTP request logic
+│   ├── services/         # Business logic and database operations
 │   ├── models/           # Mongoose schemas
-│   ├── routes/           # API routes
-│   └── app.js            # Entry point
-├── .env                  # Environment variables (NOT committed)
+│   ├── routes/           # API route definitions
+│   └── app.js            # Application entry point
 ├── package.json
 ├── package-lock.json
+└── .env                  # Local environment variables, not committed
 ```
 
----
+## Setup Instructions
 
-## ⚙️ Setup Instructions
-
-### 1. Clone repository
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/smart-focus-tracker.git
+git clone https://github.com/omerbar13/smart-focus-tracker.git
 cd smart-focus-tracker/backend
 ```
 
@@ -60,17 +56,13 @@ cd smart-focus-tracker/backend
 npm install
 ```
 
----
+### 3. Configure environment variables
 
-### 3. Create environment variables
-
-Create a `.env` file inside the backend folder:
+Create a `.env` file inside the `backend/` folder:
 
 ```env
 MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/taskdb
 ```
-
----
 
 ### 4. Start the server
 
@@ -78,13 +70,13 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/taskdb
 node src/app.js
 ```
 
-Server runs at:
+The server runs locally at:
 
-`http://localhost:5000`
+```text
+http://localhost:5000
+```
 
----
-
-## 📡 API Endpoints
+## API Endpoints
 
 ### Get all tasks
 
@@ -92,7 +84,7 @@ Server runs at:
 GET /tasks
 ```
 
-#### Example response
+Example response:
 
 ```json
 [
@@ -105,20 +97,21 @@ GET /tasks
 ]
 ```
 
----
-
 ### Create a task
 
 ```http
 POST /tasks
-Content-Type: application/json
+```
 
+Request body:
+
+```json
 {
   "title": "Study backend architecture"
 }
 ```
 
-#### Error response
+Example error response:
 
 ```json
 {
@@ -126,20 +119,19 @@ Content-Type: application/json
 }
 ```
 
----
-
 ### Update a task
 
 ```http
 PUT /tasks/:id
-Content-Type: application/json
+```
 
+Request body:
+
+```json
 {
   "title": "Updated task title"
 }
 ```
-
----
 
 ### Delete a task
 
@@ -147,35 +139,29 @@ Content-Type: application/json
 DELETE /tasks/:id
 ```
 
----
+## Architecture
 
-## 🧪 Example Flow
+The backend follows a layered structure:
 
-1. Create a task  
-2. Fetch all tasks  
-3. Update a task  
-4. Delete a task  
+```text
+Routes -> Controllers -> Services -> Models
+```
 
----
+This structure separates API routing, request handling, business logic, and database interaction. The goal is to keep the codebase easier to maintain, test, and extend.
 
-## 🧠 Architecture Overview
+## Current Status
 
-- Routes → define API endpoints  
-- Controllers → handle HTTP requests  
-- Services → business logic + DB operations  
-- Models → MongoDB schema  
+The current version implements the backend API and MongoDB persistence layer. Future development could include authentication, user accounts, task categories, a React frontend dashboard, and deployment.
 
-This separation improves:
-- scalability
-- maintainability
-- testability
+## Future Improvements
 
----
+- User authentication with JWT
+- User accounts and protected routes
+- Task categories or tags
+- Focus-session analytics
+- Frontend dashboard
+- Deployment to a cloud platform
 
-## 📌 Future Improvements
+## Author
 
-- JWT authentication
-- User accounts
-- Task categories/tags
-- Frontend dashboard (React)
-- Deployment (Render / Railway / Vercel)
+Omer Bar
