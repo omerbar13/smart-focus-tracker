@@ -107,6 +107,7 @@ function selectTask(id, title) {
   selectedTaskTitle = title;
 
   document.getElementById("selectedTaskLabel").textContent = `Selected task: ${title}`;
+  document.getElementById("startSessionButton").disabled = false; // ← add this line
 
   loadTasks();
 }

@@ -7,16 +7,34 @@
 </head>
 <body>
   <div class="container">
-    
+
     <h1>🧠 Smart Focus Tracker</h1>
     <p class="subtitle">Track your tasks and stay focused</p>
 
+    <!-- Task creation -->
     <div class="input-section">
       <input id="taskInput" placeholder="Enter a task..." />
       <button onclick="createTask()">Add Task</button>
     </div>
 
+    <!-- Task list -->
     <ul id="taskList"></ul>
+
+    <!-- Focus session section -->
+    <div class="focus-section">
+      <p id="selectedTaskLabel">No task selected</p>
+      <div id="timerDisplay">00:00</div>
+      <div class="focus-controls">
+        <button id="startSessionButton" disabled>Start Focus</button>
+        <button id="stopSessionButton" disabled>Stop Focus</button>
+      </div>
+    </div>
+
+    <!-- Past sessions list -->
+    <div class="sessions-section">
+      <h2>Past Sessions</h2>
+      <ul id="sessionList"></ul>
+    </div>
 
   </div>
 
